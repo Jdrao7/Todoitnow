@@ -1,5 +1,6 @@
 from flask import Flask,render_template,url_for,flash,session,request,redirect
 from flask_sqlalchemy import SQLAlchemy
+
 app=Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
@@ -8,6 +9,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 app.secret_key="1234"
+
 class Todo(db.Model):
     title=db.Column("title",db.String(20),primary_key=True)
     description=db.Column("description",db.String(100))
@@ -38,14 +40,19 @@ def register():
     if(request.method=="GET"):
         return render_template("register.html")
     else:
+        
         usr=request.form["name"]
         email=request.form["email"]
         passwd=request.form["password"]
+
         new_usr=User(usr,email,passwd)
+
         db.session.add(new_usr)
         db.session.commit()
+
         session["user"]=usr
-        return redirect(url_for("login"))
+
+        return redirect(url_for("home"))
 
 
 @app.route("/login",methods=["GET","POST"])
@@ -59,7 +66,7 @@ def login():
         existing_user=User.query.filter_by(name=usr).first()
 
         if existing_user:
-            if(existing_user.password==passwd):
+            if(existing_user.passwd==passwd):
                 session["user"]=usr
                 return redirect(url_for("home"))
             else:
@@ -69,6 +76,10 @@ def login():
             flash("Register to Access the WebApp")
             return redirect(url_for("register"))
 
+@app.route("/logout")
+def logout():
+    session.pop("user")
+    return redirect(url_for("login"))
 
 if __name__=="__main__":
    with app.app_context():

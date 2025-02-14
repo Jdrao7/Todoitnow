@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2c2c2c; /* Dark background */
+    color: #fff; /* Light text */
+    margin: 0;
+}
+
+.login-container {
+    background: #1e1e1e; /* Darker shade for container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+    width: 300px;
+    box-sizing: border-box; /* Prevents padding from increasing width */
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #ffffff; /* Ensure heading is visible */
+}
+
+.login-container input {
+    width: calc(100% - 20px); /* Adjust width to fit inside container */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background: #2a2a2a; /* Darker input field */
+    color: #fff; /* Light text */
+    box-sizing: border-box; /* Prevents overflow */
+}
+
+.login-container input::placeholder {
+    color: #aaa; /* Light grey placeholder */
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Blue accent */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

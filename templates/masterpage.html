@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%}Masterpage{%endblock%}</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='masterpage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/masterpage.css')}}">
 </head>
 <body>
     <header>
         <div class="container">
-          <h1 class="logo"></h1>
+          <h1 class="logo"><a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/to-do-list.png') }}" alt="Logo" class="logo">
+        </a></h1>
     
           <nav>
             <ul>
@@ -21,5 +23,7 @@
         </div>
       </header>
       {%block content%}<p>This block will be replaced by inherited page content block</p>{%endblock%}
+
+      <footer><p>2025 @All Rights Reserved</p></footer>
 </body>
 </html>

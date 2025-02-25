@@ -1,5 +1,59 @@
-{%extends  "masterpage.html" %}
+{% extends "masterpage.html" %}
 
-{%block title%}Home Page{%endblock%}
+{% block title %}Home Page{% endblock %}
 
-{%block content%}{%endblock%}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/todo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container todo-container">
+  <h2 class="heading">Add a Todo</h2>
+  <form action="/" method="POST">
+      <div class="input-group">
+        <label for="title">Todo Title</label>
+        <input type="text" name="title" id="title" placeholder="Enter title"> 
+      </div>
+      <div class="input-group">
+        <label for="desc">Todo Description</label>
+        <input type="text" name="desc" id="desc" placeholder="Enter description">
+      </div>
+      <button type="submit" class="btn">Add Todo</button>
+  </form>
+</div>
+
+<div class="container todo-container">
+  <h2 class="heading">Your Todos</h2>
+  {% if allTodo|length == 0 %}
+    <div class="alert">
+      No Todos found. Add your first todo now!
+    </div>
+  {% else %}
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th>SNo</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todo in allTodo %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.desc }}</td>
+          <td>{{ todo.date_created }}</td>
+          <td class="actions">
+            <a href="/update/{{ todo.sno }}" class="btn btn-update">Update</a>
+            <a href="/delete/{{ todo.sno }}" class="btn btn-delete">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</div>
+{% endblock %}

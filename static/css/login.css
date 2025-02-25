@@ -41,7 +41,7 @@ body {
 .login-container button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff; /* Blue accent */
+    background-color: #FFD700; /* Blue accent */
     color: white;
     border: none;
     border-radius: 5px;
@@ -49,5 +49,5 @@ body {
 }
 
 .login-container button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #FFD700; /* Darker blue on hover */
 }

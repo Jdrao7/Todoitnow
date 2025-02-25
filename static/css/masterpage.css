@@ -1,46 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
 body {
-	margin: 0;
-	background: #222;
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 800;
+  margin: 0;
+  background: #222; /* Dark background */
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
 }
 
 .container {
-	width: 80%;
-	margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 header {
-  background: #ffffff;
-  padding: 5px 0;         /* Add spacing */
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center;
+  background: #222; /* Dark background for navbar */
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
-  background-color: #222;  /* Dark background */
-  color: #fff;             /* White text */
-  text-align: center;      /* Center the text */
-  padding: 15px 0;         /* Add space inside */
-  font-size: 14px;         /* Adjust text size */
-  font-weight: 300;        /* Light font */
-  position: fixed;         /* Stick to bottom */
+  background-color: #222;
+  color: #FFD700; /* Gold text */
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 300;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
+
 .logo {
-  height: 40px;   /* Adjust size */
+  height: 40px;
   width: auto;
   margin: 0%;
-  padding: 0;    /* Keep aspect ratio */
-   /* Ensure proper spacing */
+  padding: 0;
 }
 
 footer p {
   margin: 0;
-  letter-spacing: 0.5px;  /* Slight spacing for better readability */
+  letter-spacing: 0.5px;
 }
 
 header::after {
@@ -52,6 +53,9 @@ header::after {
 .logo {
   float: left;
   padding: 5px 0;
+}
+.logo img {
+  filter: invert(1); /* Turns black parts white */
 }
 
 nav {
@@ -68,31 +72,29 @@ nav li {
   display: inline-block;
   margin-left: 70px;
   padding-top: 23px;
-
   position: relative;
 }
 
 nav a {
-  color: #444;
+  color: #FFD700; /* Gold links */
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
+  transition: color 0.3s ease-in-out;
 }
 
 nav a:hover {
-  color: #000;
+  color: #FAD02E; /* Lighter gold hover */
 }
 
 nav a::before {
   content: '';
   display: block;
   height: 5px;
-  background-color: #444;
-
+  background-color: #FFD700; /* Gold underline */
   position: absolute;
   top: 0;
   width: 0%;
-
   transition: all ease-in-out 250ms;
 }
 

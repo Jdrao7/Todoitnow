@@ -11,7 +11,8 @@ db=SQLAlchemy(app)
 app.secret_key="1234"
 
 class Todo(db.Model):
-    title=db.Column("title",db.String(20),primary_key=True)
+    sno=db.Column("sno",db.Integer(),primary_key=True)
+    title=db.Column("title",db.String(20))
     description=db.Column("description",db.String(100))
 
     def __init__(self,title,description):
@@ -31,7 +32,8 @@ class User(db.Model):
 @app.route("/")
 def home():
     if "user" in session:
-        return render_template("home.html")
+        alltodo=Todo.query.all()
+        return render_template("home.html",allTodo=alltodo)
     else:
         return redirect(url_for("login"))
 
@@ -75,11 +77,27 @@ def login():
         else:
             flash("Register to Access the WebApp")
             return redirect(url_for("register"))
-
+    
 @app.route("/logout")
 def logout():
     session.pop("user")
     return redirect(url_for("login"))
+
+@app.route("/add", methods=["POST"])
+def add():
+    if request.method == "POST":
+        ttl = request.form["title"]
+        desc = request.form["description"]
+
+        new_todo = Todo(title=ttl, description=desc)
+        db.session.add(new_todo)
+        db.session.commit()
+
+        
+    return redirect(url_for("home"))  
+    
+        
+
 
 if __name__=="__main__":
    with app.app_context():

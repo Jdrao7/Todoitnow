@@ -4,8 +4,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f9fa; /* Light background */
-    color: #333; /* Darker text */
+    background-color: #f8f9fa; 
+    color: #333;
     margin: 0;
 }
 
@@ -20,7 +20,7 @@ body {
     width: 350px;
     padding: 2rem;
     text-align: center;
-    background: #ffffff; /* White card */
+    background: #ffffff; 
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -32,7 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    background-color: #f1f3f5; /* Light grey */
+    background-color: #f1f3f5; 
     border-radius: 5px;
     padding: 0.8em 1em;
 }
@@ -40,7 +40,7 @@ body {
 .input-icon {
     height: 1.2em;
     width: 1.2em;
-    fill: #007bff; /* Blue accent */
+    fill: #007bff; 
 }
 
 .input-field {
@@ -60,7 +60,7 @@ body {
     color: #333;
 }
 
-/* Buttons */
+
 .btn {
     margin: 1rem 0;
     border: none;
@@ -79,7 +79,7 @@ body {
     background-color: #0056b3;
 }
 
-/* Flash Messages */
+
 .flash-messages {
     margin-bottom: 1rem;
 }
@@ -92,16 +92,16 @@ body {
 }
 
 .flash-message.success {
-    background-color: #28a745; /* Green */
+    background-color: #28a745; 
     color: white;
 }
 
 .flash-message.error {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545; 
     color: white;
 }
 
-/* Responsive */
+
 @media screen and (max-width: 400px) {
     .card {
         width: 90%;

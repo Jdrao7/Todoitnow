@@ -1,66 +1,149 @@
-/* todo.css */
+body.todo-page {
+    font-family: Arial, sans-serif;
+    background-color: #e3f2fd; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
 .todo-container {
-    background-color: #1e1e1e;
-    color: white;
-    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 2rem;
+    margin: 1rem auto;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.todo-container h2 {
-    color: #F4C430;
-    font-size: 24px;
+.todo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.todo-container .input-group {
-    margin-bottom: 15px;
+
+.heading {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #1565c0; 
 }
 
-.todo-container input {
-    background-color: #2e2e2e;
-    color: white;
-    border: 1px solid #444;
-    padding: 8px;
-    width: 100%;
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.todo-container .btn {
-    background-color: #F4C430;
-    color: black;
-    padding: 10px 15px;
+.input-group input:focus {
+    border-color: #1565c0;
+    box-shadow: 0 0 5px rgba(21, 101, 192, 0.3);
+    outline: none;
+}
+
+
+.btn {
+    background: #1565c0; 
+    color: #fff;
     border: none;
+    padding: 0.8rem 1.5rem;
     border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    width: 100%;
 }
 
-.todo-container .btn:hover {
-    background-color: #ff9900;
+.btn:hover {
+    background: #0d47a1;
+    transform: scale(1.05);
 }
+
 
 .todo-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #333;
-    color: white;
+    margin-top: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .todo-table th, .todo-table td {
-    padding: 10px;
-    border: 1px solid #555;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
-.actions .btn-update {
-    background-color: #00cc66;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
+.todo-table th {
+    background: #1565c0;
+    color: #fff;
 }
 
-.actions .btn-delete {
-    background-color: #cc0000;
-    color: white;
-    padding: 5px 10px;
+.todo-table tr:nth-child(even) {
+    background: #e3f2fd;
+}
+
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.btn-update {
+    background: #28a745;
+    padding: 0.6rem 1rem;
     border-radius: 5px;
-    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-delete {
+    background: #dc3545;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-update:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.btn-delete:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .todo-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
 }

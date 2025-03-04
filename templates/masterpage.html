@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}Masterpage{%endblock%}</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='css/masterpage.css')}}">
+    <title>{% block title %}Master Page{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/masterpage.css') }}">
     {% block head %}{% endblock %}
 </head>
 <body>
     <header>
         <div class="container">
-          <h1 class="logo"><a href="{{ url_for('home') }}">
-            <img src="{{ url_for('static', filename='images/to-do-list.png') }}" alt="Logo" class="logo">
-        </a></h1>
-    
-          <nav>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="{{url_for('logout')}}">Logout</a></li>
-            </ul>
-          </nav>
+            <div class="logo-container">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/to-do-list.png') }}" alt="Logo" class="logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
         </div>
-      </header>
-      {%block content%}<p>This block will be replaced by inherited page content block</p>{%endblock%}
+    </header>
 
-      <footer><p>2025 ©All Rights Reserved</p></footer>
+    <main class="content">
+        {% block content %}
+            <p>This block will be replaced by inherited page content.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>2025 © All Rights Reserved</p>
+    </footer>
 </body>
 </html>

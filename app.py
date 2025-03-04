@@ -20,12 +20,11 @@ class Todo(db.Model):
         self.description=description
 
 class User(db.Model):
-    name=db.Column("name",db.String(20),primary_key=True)
-    email=db.Column("email",db.String(20))
+    
+    email=db.Column("email",db.String(20),primary_key=True)
     passwd=db.Column("password",db.String(10))
 
-    def __init__(self,name,email,passwd):
-        self.name=name
+    def __init__(self,email,passwd):
         self.email=email
         self.passwd=passwd
 
@@ -42,19 +41,24 @@ def register():
     if(request.method=="GET"):
         return render_template("register.html")
     else:
-        
-        usr=request.form["name"]
         email=request.form["email"]
         passwd=request.form["password"]
 
-        new_usr=User(usr,email,passwd)
 
-        db.session.add(new_usr)
-        db.session.commit()
+        if (User.query.filter_by(email=email).first()):
 
-        session["user"]=usr
+            flash("User already exist")
+            return render_template('register.html')
 
-        return redirect(url_for("home"))
+        else:
+            
+            new_usr=User(email,passwd)
+            db.session.add(new_usr)
+            db.session.commit()
+
+            session["user"]=email
+
+            return redirect(url_for("home"))
 
 
 @app.route("/login",methods=["GET","POST"])
@@ -62,14 +66,14 @@ def login():
     if(request.method=="GET"):
         return render_template("login.html")
     else:
-        usr=request.form["name"]
+        usr_email=request.form["email"]
         passwd=request.form["password"]
         
-        existing_user=User.query.filter_by(name=usr).first()
+        existing_user=User.query.filter_by(email=usr_email).first()
 
         if existing_user:
             if(existing_user.passwd==passwd):
-                session["user"]=usr
+                session["user"]=usr_email
                 return redirect(url_for("home"))
             else:
                 flash("Wrong Password")
@@ -82,6 +86,15 @@ def login():
 def logout():
     session.pop("user")
     return redirect(url_for("login"))
+
+@app.route("/delete<int:sno>")
+def delete(sno):
+    s_no=sno
+    todo=Todo.query.filter_by(sno=s_no).first()
+    db.session.delete(todo)
+    db.session.commit()
+
+    return redirect(url_for('home'))
 
 @app.route("/add", methods=["POST"])
 def add():
